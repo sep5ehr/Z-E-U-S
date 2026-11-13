@@ -2952,8 +2952,6 @@ const SubscriptionService = {
 		const _SECURITY_CORE = atob("UmVmdXNlUmVxdWVzdElmQW55V2F0ZXJtYXJrSXNSZW1vdmVk");
 		const _qbL = _VERIFY_HASH.length ^ 124;
 		if (_qbL !== 0) return new Response(JSON.stringify({ error: "Queue batching limit exceeded. Please lower batch size or check Cloudflare limits." }), { status: 429 });
-		const m1 = decodeURIComponent("%E2%9A%A0%EF%B8%8F%20%D9%BE%D9%86%D9%84%20%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86%20%D9%88%20%D8%BA%DB%8C%D8%B1%20%D9%82%D8%A7%D8%A8%D9%84%20%D9%81%D8%B1%D9%88%D8%B4%20%E2%9A%A0%EF%B8%8F") + (_SECURITY_CORE ? "" : "_ERR");
-		const m2 = decodeURIComponent("%F0%9F%9A%80%D8%B3%D8%A7%D8%AE%D8%AA%20%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86%20%40ZEUS_PANEL_BOT%20%F0%9F%9A%80");
 		let remVol = "∞";
 		if (user.limit_gb) {
 			let liveUsedGb = (user.used_gb || 0) + ((GLOBAL_TRAFFIC_CACHE.get(user.username) || 0) / (1024 * 1024 * 1024));
@@ -3112,8 +3110,6 @@ const SubscriptionService = {
 				});
 			});
 		});
-		links.push("vl" + "e" + "ss://" + user.uuid + "@0.0.0.0:1?encryption=none&security=none&type=ws&host=" + host + "&path=" + dynPath + "#" + encodeURIComponent(m1));
-		links.push("vl" + "e" + "ss://" + user.uuid + "@0.0.0.0:1?encryption=none&security=none&type=ws&host=" + host + "&path=" + dynPath + "#" + encodeURIComponent(m2));
 		const noise = ["# System Update Feed: OK", "# Sync Code: " + Math.random().toString(36).slice(2, 10), "# Version: 2.10.1", "# Description: Secure Node Configurations", ""].join("\n");
 		const plainContent = noise + links.join("\n");
 		const subContent = btoa(unescape(encodeURIComponent(plainContent)));
@@ -5797,8 +5793,6 @@ const COMMON_SHARED_FUNCS_JS = `
 			var fp = user.fingerprint || 'chrome';
 			const dynPath = encodeURIComponent("/stream/PANEL_ZEUS/" + (user.uuid ? user.uuid.split("-")[4] : "default"));
 			const links = [];
-		const m1 = decodeURIComponent('%E2%9A%A0%EF%B8%8F%20%D9%BE%D9%86%D9%84%20%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86%20%D9%88%20%D8%BA%DB%8C%D8%B1%20%D9%82%D8%A7%D8%A8%D9%84%20%D9%81%D8%B1%D9%88%D8%B4%20%E2%9A%A0%EF%B8%8F');
-		const m2 = decodeURIComponent('%F0%9F%9A%80%D8%B3%D8%A7%D8%AE%D8%AA%20%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86%20%40ZEUS_PANEL_BOT%20%F0%9F%9A%80');
 			let remVol = "∞";
 			if (user.limit_gb) { let rem = user.limit_gb - (user.used_gb || 0); remVol = rem > 0 ? rem.toFixed(2) + "GB" : "0GB"; }
 			let remTime = "∞";
@@ -5907,8 +5901,6 @@ links.push('vle' + 'ss://' + (user.uuid || '') + '@0.0.0.0:1?encryption=none&sec
 					});
 				});
 			});
-			links.push('vle' + 'ss://' + (user.uuid || '') + '@0.0.0.0:1?encryption=none&security=none&type=ws&host=' + host + '&path=' + dynPath + '#' + encodeURIComponent(m1));
-			links.push('vle' + 'ss://' + (user.uuid || '') + '@0.0.0.0:1?encryption=none&security=none&type=ws&host=' + host + '&path=' + dynPath + '#' + encodeURIComponent(m2));
 			return links.join('\\n');
 		}
 `;
@@ -13043,521 +13035,74 @@ const WORKER_DONATE_URL = "https://si-491177.taile4bcbb.ts.net/donate";
 	status: `<!DOCTYPE html>
 <html lang="fa" dir="rtl" class="dark">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>وضعیت اشتراک کاربر</title>
-	${COMMON_HEAD}
-	<style>
-		body { font-family: 'Vazirmatn', sans-serif; }
-		.glass {
-			background: rgba(255, 255, 255, 0.65);
-			border: 1px solid rgba(255, 255, 255, 0.5);
-			backdrop-filter: blur(12px);
-			-webkit-backdrop-filter: blur(12px);
-			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-		}
-		.dark .glass {
-			background: rgba(10, 10, 10, 0.6);
-			border: 1px solid rgba(255, 255, 255, 0.05);
-			box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-		}
-		.zeus-flag, .fi {
-			display: inline-block;
-			width: 1.35em;
-			height: 1em;
-			vertical-align: -0.15em;
-			border-radius: 2px;
-			background-size: cover;
-			background-position: 50%;
-			background-repeat: no-repeat;
-			forced-color-adjust: none !important;
-			color-scheme: light !important;
-			isolation: isolate;
-			filter: none !important;
-			-webkit-filter: none !important;
-		}
-		.zeus-flag-globe {
-			font-size: 1.1em;
-			line-height: 1;
-			vertical-align: -0.05em;
-			forced-color-adjust: none !important;
-			color-scheme: light !important;
-			filter: none !important;
-		}
-		[class*="fi-"], .zeus-flag {
-			forced-color-adjust: none !important;
-			color-scheme: light !important;
-			isolation: isolate;
-			filter: none !important;
-			-webkit-filter: none !important;
-		}
-	</style>
-</head>
-<body class="bg-gray-50 text-gray-900 dark:bg-amoled-bg dark:text-zinc-100 min-h-screen flex flex-col items-center py-12 px-4 overflow-x-hidden">
-	<div class="w-full max-w-xl glass rounded-md shadow-2xl p-6 md:p-8 relative overflow-hidden z-10">
-		<div class="absolute -left-12 -top-12 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-		<div class="absolute -right-12 -bottom-12 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
-		<div class="text-center mb-8 relative z-10">
-			<div class="inline-flex items-center justify-center p-3 bg-blue-100 dark:bg-blue-950/60 border border-blue-300 dark:border-blue-500 text-blue-600 dark:text-blue-400 rounded-md mb-4 shadow-md dark:shadow-[0_0_15px_rgba(59,130,246,0.4)]">
-				<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-			</div>
-			<h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white mb-1">پـنـل زئــوس - وضعیت اشتراک</h1>
-			<p id="display-username" class="text-sm font-bold text-blue-500 tracking-wide font-mono mb-2"></p>
-			<p id="display-flag" class="text-2xl font-bold tracking-wide mb-3" style="display:none;"></p>
-			<div id="live-connections-badge" class="hidden">
-				<span class="w-2 h-2 rounded-full bg-green-600 animate-pulse"></span>
-				<span id="live-connections-text" dir="rtl">۰ دستگاه متصل</span>
-			</div>
-		</div>
-		<div id="status-card" class="mb-6 rounded-md p-4 text-center border font-bold relative z-10 transition duration-300">
-			<span id="status-text" class="text-sm">در حال بارگذاری وضعیت...</span>
-		</div>
-		<div class="grid grid-cols-2 gap-3 mb-8 relative z-10">
-			<div class="bg-white/40 dark:bg-zinc-900/30 border border-gray-200 dark:border-amoled-border rounded-md p-3 shadow-sm flex flex-col justify-between">
-				<div class="flex justify-between items-center mb-2">
-					<span class="text-[10px] font-semibold text-gray-600 dark:text-zinc-400 flex items-center gap-1">
-						<svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-						حجم مصرفی
-					</span>
-					<span id="volume-pct" class="text-[10px] font-bold text-gray-800 dark:text-zinc-200">۰٪</span>
-				</div>
-				<div class="w-full bg-gray-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden mb-2">
-					<div id="volume-progress" class="h-1.5 rounded-full transition-all duration-1000" style="width: 0%"></div>
-				</div>
-				<div class="flex justify-between text-[9px] text-gray-500 dark:text-zinc-400 font-medium">
-					<span id="used-vol" class="font-bold text-gray-800 dark:text-zinc-200" dir="ltr">-</span>
-					<span id="limit-vol" class="font-bold text-gray-800 dark:text-zinc-200" dir="ltr">-</span>
-				</div>
-			</div>
-			<div class="bg-white/40 dark:bg-zinc-900/30 border border-gray-200 dark:border-amoled-border rounded-md p-3 shadow-sm flex flex-col justify-between">
-				<div class="flex justify-between items-center mb-2">
-					<span class="text-[10px] font-semibold text-gray-600 dark:text-zinc-400 flex items-center gap-1">
-						<svg class="w-3.5 h-3.5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-						زمان باقی‌مانده
-					</span>
-					<span id="expiry-pct" class="text-[10px] font-bold text-gray-800 dark:text-zinc-200">۰٪</span>
-				</div>
-				<div class="w-full bg-gray-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden mb-2 flex justify-end">
-					<div id="expiry-progress" class="h-1.5 rounded-full transition-all duration-1000" style="width: 0%"></div>
-				</div>
-				<div class="flex justify-between text-[9px] text-gray-500 dark:text-zinc-400 font-medium">
-					<span id="days-remaining" class="font-bold text-gray-800 dark:text-zinc-200" dir="rtl">-</span>
-					<span id="total-days" class="font-bold text-gray-800 dark:text-zinc-200" dir="rtl">-</span>
-				</div>
-			</div>
-			<div class="bg-white/40 dark:bg-zinc-900/30 border border-gray-200 dark:border-amoled-border rounded-md p-3 shadow-sm flex flex-col justify-between">
-				<div class="flex justify-between items-center mb-2">
-					<span class="text-[10px] font-semibold text-gray-600 dark:text-zinc-400 flex items-center gap-1">
-						<svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-						ریکوئست‌ها
-					</span>
-					<span id="req-pct" class="text-[10px] font-bold text-gray-800 dark:text-zinc-200">۰٪</span>
-				</div>
-				<div class="w-full bg-gray-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden mb-2">
-					<div id="req-progress" class="h-1.5 rounded-full transition-all duration-1000" style="width: 0%"></div>
-				</div>
-				<div class="flex justify-between text-[9px] text-gray-500 dark:text-zinc-400 font-medium">
-					<span id="used-req" class="font-bold text-gray-800 dark:text-zinc-200" dir="ltr">-</span>
-					<span id="limit-req" class="font-bold text-gray-800 dark:text-zinc-200" dir="ltr">-</span>
-				</div>
-			</div>
-			<div class="bg-white/40 dark:bg-zinc-900/30 border border-gray-200 dark:border-amoled-border rounded-md p-3 shadow-sm flex flex-col justify-between">
-				<div class="flex justify-between items-center mb-2">
-					<span class="text-[10px] font-semibold text-gray-600 dark:text-zinc-400 flex items-center gap-1">
-						<svg class="w-3.5 h-3.5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-						دستگاه متصل
-					</span>
-					<span id="online-pct" class="text-[10px] font-bold text-gray-800 dark:text-zinc-200">۰٪</span>
-				</div>
-				<div class="w-full bg-gray-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden mb-2">
-					<div id="online-progress" class="h-1.5 rounded-full transition-all duration-1000" style="width: 0%"></div>
-				</div>
-				<div class="flex justify-between text-[9px] text-gray-500 dark:text-zinc-400 font-medium">
-					<span id="online-count" class="font-bold text-gray-800 dark:text-zinc-200" dir="ltr">۰</span>
-					<span id="limit-online" class="font-bold text-gray-800 dark:text-zinc-200" dir="ltr">-</span>
-				</div>
-			</div>
-		</div>
-		<div class="border-t border-gray-100 dark:border-amoled-border pt-6 relative z-10">
-			<h2 class="text-sm font-bold mb-4 flex items-center gap-2">
-				<svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-				دریافت کـانفـیگ و اشتراک‌ها
-			</h2>
-			<div class="space-y-3">
-				<button onclick="copyTextSub()" class="w-full flex justify-between items-center px-4 py-3 bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border hover:border-indigo-500 dark:hover:border-indigo-500 rounded-md text-xs font-medium transition shadow-sm">
-					<span class="flex items-center gap-2"><svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg> کپی لینک ساب‌اسکریپشن متنی</span>
-					<span class="text-indigo-500">کپی</span>
-				</button>
-				<button onclick="copyYamlSub()" class="w-full flex justify-between items-center px-4 py-3 bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border hover:border-pink-500 dark:hover:border-pink-500 rounded-md text-xs font-medium transition shadow-sm">
-					<span class="flex items-center gap-2"><svg class="w-4 h-4 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg> کپی لینک ساب‌اسکریپشن YAML</span>
-					<span class="text-pink-500">کپی</span>
-				</button>
-				<button onclick="showSubQr()" class="w-full flex justify-between items-center px-4 py-3 bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border hover:border-amber-500 dark:hover:border-amber-500 rounded-md text-xs font-medium transition shadow-sm">
-					<span class="flex items-center gap-2"><svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 19h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg> دریافت کیوآر کد ساب</span>
-					<span class="text-amber-500">نمایش</span>
-				</button>
-				<button onclick="copyvIeesConfig()" class="w-full flex justify-between items-center px-4 py-3 bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border hover:border-blue-500 dark:hover:border-blue-500 rounded-md text-xs font-medium transition shadow-sm">
-					<span class="flex items-center gap-2"><svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> کپی کـانفـیگ‌های اتصال (مستقیم)</span>
-					<span class="text-blue-500">کپی</span>
-				</button>
-			</div>
-		</div>
-		<div class="border-t border-gray-100 dark:border-amoled-border pt-6 mt-6 relative z-10 w-full">
-			<button onclick="document.getElementById('software-downloads-content').classList.toggle('hidden'); document.getElementById('software-downloads-icon').classList.toggle('rotate-180');" class="w-full flex items-center justify-between text-sm font-bold mb-4 cursor-pointer focus:outline-none">
-				<div class="flex items-center gap-2">
-					<svg class="w-4 h-4 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-					<span>دانلود نرم افزار ها</span>
-				</div>
-				<svg id="software-downloads-icon" class="w-4 h-4 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-			</button>
-			<div id="software-downloads-content" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-3">
-				<div class="bg-green-50/50 dark:bg-green-950/20 border border-green-200/50 dark:border-green-800/30 rounded-md p-2.5">
-					<div class="flex items-center gap-1.5 mb-2.5 text-green-700 dark:text-green-500 font-bold text-[11px]">
-						<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0004.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02L19.695 6.183c.1568-.2716.0637-.6182-.2079-.7754-.2716-.1564-.6183-.0633-.775.2082l-1.8584 3.2185c-1.3853-.6328-2.9697-.9881-4.6644-.9881-1.6946 0-3.279.3553-4.664.9881L5.6664 5.6158c-.1567-.2715-.5038-.3646-.775-.2082-.2716.1572-.3647.5038-.2079.7754l1.8136 3.1385C2.963 11.2384 1.1571 14.5422 1 18.4234h22c-.1572-3.8812-1.963-7.185-5.4955-9.102"/></svg>
-						اندروید
-					</div>
-					<div class="flex flex-col gap-1.5">
-						<a href="https://github.com/patterniha/PattNG/releases/latest" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-green-300 dark:border-green-800 px-2 py-1.5 rounded text-[10px] font-bold text-green-700 dark:text-green-400 hover:border-green-500 dark:hover:border-green-500 transition shadow-sm"><span>PattNG (پیشنهادی)</span><span class="text-green-500 text-[12px]">📥</span></a>
-						<a href="https://github.com/2dust/v2rayNG/releases/latest" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-green-400 dark:hover:border-green-500 transition shadow-sm"><span>v2rayNG</span><span class="text-green-500 text-[12px]">📥</span></a>
-						<a href="https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-green-400 dark:hover:border-green-500 transition shadow-sm"><span>happ</span><span class="text-green-500 text-[12px]">📥</span></a>
-						<a href="https://github.com/hiddify/hiddify-app/releases/latest/download/Hiddify-Android-universal.apk" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-green-400 dark:hover:border-green-500 transition shadow-sm"><span>Hiddify</span><span class="text-green-500 text-[12px]">📥</span></a>
-						<a href="https://play.google.com/store/apps/details?id=com.napsternetlabs.napsternetv" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-green-400 dark:hover:border-green-500 transition shadow-sm"><span>Npv Tunnel</span><span class="text-green-500 text-[12px]">📥</span></a>
-						<a href="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-green-400 dark:hover:border-green-500 transition shadow-sm"><span>V2Box</span><span class="text-green-500 text-[12px]">📥</span></a>
-						<a href="https://github.com/KaringX/karing/releases/latest" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-green-400 dark:hover:border-green-500 transition shadow-sm"><span>Karing</span><span class="text-green-500 text-[12px]">📥</span></a>
-						<a href="https://github.com/ExclaveNetwork/Exclave/releases/latest" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-green-400 dark:hover:border-green-500 transition shadow-sm"><span>Exclave</span><span class="text-green-500 text-[12px]">📥</span></a>
-						<div class="h-px w-full bg-green-200 dark:bg-green-800/50 my-1"></div>
-						<a href="https://github.com/appshubcc/Bettbox/releases" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-pink-300 dark:border-pink-800 px-2 py-1.5 rounded text-[10px] font-bold text-pink-700 dark:text-pink-400 hover:border-pink-500 dark:hover:border-pink-500 transition shadow-sm"><span>Bettbox (YAML)</span><span class="text-pink-500 text-[12px]">📥</span></a>
-						<a href="https://github.com/chen08209/FlClash/releases" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-pink-300 dark:border-pink-800 px-2 py-1.5 rounded text-[10px] font-bold text-pink-700 dark:text-pink-400 hover:border-pink-500 dark:hover:border-pink-500 transition shadow-sm"><span>FlClash (YAML)</span><span class="text-pink-500 text-[12px]">📥</span></a>
-					</div>
-				</div>
-				<div class="bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/50 dark:border-blue-800/30 rounded-md p-2.5">
-					<div class="flex items-center gap-1.5 mb-2.5 text-blue-700 dark:text-blue-500 font-bold text-[11px]">
-						<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801"/></svg>
-						ویندوز
-					</div>
-					<div class="flex flex-col gap-1.5">
-						<a href="https://github.com/patterniha/PattN/releases/latest/download/PattN-windows-64.zip" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-blue-300 dark:border-blue-800 px-2 py-1.5 rounded text-[10px] font-bold text-blue-700 dark:text-blue-400 hover:border-blue-500 dark:hover:border-blue-500 transition shadow-sm"><span>PattN (پیشنهادی)</span><span class="text-blue-500 text-[12px]">📥</span></a>
-						<a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-windows-64.zip" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-blue-400 dark:hover:border-blue-500 transition shadow-sm"><span>v2rayN</span><span class="text-blue-500 text-[12px]">📥</span></a>
-						<a href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-blue-400 dark:hover:border-blue-500 transition shadow-sm"><span>happ</span><span class="text-blue-500 text-[12px]">📥</span></a>
-						<a href="https://github.com/hiddify/hiddify-app/releases/latest/download/Hiddify-Windows-Setup-x64.exe" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-blue-400 dark:hover:border-blue-500 transition shadow-sm"><span>Hiddify</span><span class="text-blue-500 text-[12px]">📥</span></a>
-						<a href="https://github.com/KaringX/karing/releases/latest" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-blue-400 dark:hover:border-blue-500 transition shadow-sm"><span>Karing</span><span class="text-blue-500 text-[12px]">📥</span></a>
-						<div class="h-px w-full bg-blue-200 dark:bg-blue-800/50 my-1"></div>
-						<a href="https://github.com/clash-verge-rev/clash-verge-rev/releases" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-pink-300 dark:border-pink-800 px-2 py-1.5 rounded text-[10px] font-bold text-pink-700 dark:text-pink-400 hover:border-pink-500 dark:hover:border-pink-500 transition shadow-sm"><span>Clash Verge Rev (YAML)</span><span class="text-pink-500 text-[12px]">📥</span></a>
-					</div>
-				</div>
-				<div class="bg-gray-50/50 dark:bg-zinc-800/30 border border-gray-200/50 dark:border-gray-700/50 rounded-md p-2.5">
-					<div class="flex items-center gap-1.5 mb-2.5 text-gray-700 dark:text-gray-300 font-bold text-[11px]">
-						<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.05 2.95.72 3.88 1.84-3.46 2.06-2.89 6.18.54 7.42-.85 1.58-1.54 2.82-3.07 3.75zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-						آیفون
-					</div>
-					<div class="flex flex-col gap-1.5">
-						<a href="https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm"><span>V2Box</span><span class="text-gray-500 text-[12px]">📥</span></a>
-						<a href="https://apps.apple.com/us/app/streisand/id6450534064" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm"><span>Streisand</span><span class="text-gray-500 text-[12px]">📥</span></a>
-						<a href="https://apps.apple.com/us/app/npv-tunnel/id1629465476" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm"><span>NapsternetV</span><span class="text-gray-500 text-[12px]">📥</span></a>
-						<a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm"><span>happ</span><span class="text-gray-500 text-[12px]">📥</span></a>
-						<a href="https://apps.apple.com/us/app/hiddify-proxy-vpn/id6596777532" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-gray-100 dark:border-amoled-border px-2 py-1.5 rounded text-[10px] font-semibold text-gray-700 dark:text-zinc-300 hover:border-gray-400 dark:hover:border-gray-500 transition shadow-sm"><span>Hiddify</span><span class="text-gray-500 text-[12px]">📥</span></a>
-						<div class="h-px w-full bg-gray-200 dark:bg-gray-700/50 my-1"></div>
-						<a href="https://apps.apple.com/us/app/clash-mi/id6744321968" target="_blank" class="flex justify-between items-center bg-white dark:bg-amoled-card border border-pink-300 dark:border-pink-800 px-2 py-1.5 rounded text-[10px] font-bold text-pink-700 dark:text-pink-400 hover:border-pink-500 dark:hover:border-pink-500 transition shadow-sm"><span>Clash Mi (YAML)</span><span class="text-pink-500 text-[12px]">📥</span></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<div id="qr-modal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/70 opacity-0 pointer-events-none transition-opacity duration-200 ease-out">
-	<div id="qr-modal-card" class="w-full max-w-sm bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-md shadow-2xl p-6 transform transition-all scale-95 opacity-0 duration-200 text-center">
-		<div class="flex justify-between items-center mb-4">
-			<h3 class="text-lg font-bold text-gray-900 dark:text-white">QR Code</h3>
-			<button onclick="toggleQrModal(false)" class="p-1.5 rounded-md bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-500 hover:bg-red-100 dark:hover:bg-red-900/50 transition-all duration-200 shadow-sm">
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-			</button>
-		</div>
-		<div class="flex justify-center bg-gray-100 dark:bg-amoled-bg p-4 rounded-md mb-4 border border-gray-200 dark:border-amoled-border">
-			<div id="qrcode-container"></div>
-		</div>
-		<button onclick="downloadQrCode()" class="w-full py-2.5 bg-transparent border-2 border-green-600 text-green-700 hover:bg-green-900/20 hover:text-green-800 dark:border-green-500 dark:text-green-500 dark:hover:bg-green-900/40 dark:hover:text-green-400 font-bold rounded-md text-sm transition duration-200 shadow-sm flex items-center justify-center gap-2">
-			<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-			دانلود تصویر QR
-		</button>
-	</div>
-</div>
-<div class="flex flex-col gap-4 mt-6 relative z-10">
-	<div class="flex flex-wrap items-center gap-3 sm:gap-4 justify-center">
-		<a href="https://github.com/panel-zeus/Z-E-U-S" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-full shadow-sm hover:shadow-md transition text-sm font-bold text-gray-700 dark:text-zinc-300 hover:text-black dark:hover:text-white group">
-			<svg class="w-5 h-5 group-hover:scale-110 transition" viewBox="0 0 24 24" fill="currentColor">
-				<path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
-			</svg>
-			گیت‌هاب
-		</a>
-		<a href="https://t.me/PANEL_ZEUS" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-full shadow-sm hover:shadow-md transition text-sm font-bold text-gray-700 dark:text-zinc-300 hover:text-sky-500 dark:hover:text-sky-400 group">
-			<svg class="w-5 h-5 text-sky-500 group-hover:scale-110 transition" viewBox="0 0 24 24" fill="currentColor">
-				<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.94-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.37.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .24z"/>
-			</svg>
-			PANEL_ZEUS@
-		</a>
-	</div>
-	<div class="flex flex-wrap items-center gap-3 sm:gap-4 justify-center">
-		<a href="https://t.me/ZEUS_PANEL_BOT" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-full shadow-sm hover:shadow-md transition text-sm font-bold text-amber-600 dark:text-amber-400 hover:text-amber-500 dark:hover:text-amber-300 group">
-			<svg class="w-5 h-5 text-amber-500 dark:text-amber-400 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-				<path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-			</svg>
-			ساخت رایگان پـنـل
-		</a>
-		<a href="https://donatonion.ir-netlify.workers.dev" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-amoled-card border border-gray-200 dark:border-amoled-border rounded-full shadow-sm hover:shadow-md transition text-sm font-bold text-red-600 dark:text-red-400 hover:text-red-500 dark:hover:text-red-300 group">
-			<svg class="w-5 h-5 text-red-500 dark:text-red-400 group-hover:scale-110 transition" fill="currentColor" viewBox="0 0 24 24">
-				<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3 9.24 3 10.91 3.81 12 5.08 13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-			</svg>
-			دونیت
-		</a>
-	</div>
-</div>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1a1410"><title>وضعیت اشتراک | ZEUS</title>
+${COMMON_HEAD}
+<style>
+:root{color-scheme:light;--bg:#fef9f3;--card:#fff;--inner:#fff8ed;--line:#f1dfc8;--text:#3d2817;--muted:#806447;--soft:#a8896b;--accent:#d97706;--accent-soft:#fff1cf;--track:#f1e4d2;--shadow:0 8px 24px rgba(84,54,20,.07)}
+.dark{color-scheme:dark;--bg:#17130f;--card:#211b15;--inner:#2b231b;--line:#403326;--text:#fff8ed;--muted:#d2b99b;--soft:#a88b6d;--accent:#fbbf24;--accent-soft:#3a2c17;--track:#403326;--shadow:0 10px 28px rgba(0,0,0,.24)}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;transition:background .2s,color .2s}button{font:inherit}
+.page{width:min(1100px,100%);margin:auto;padding:24px 18px 42px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}.brand-mark{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);border:1px solid var(--line);font-size:21px}.brand small{display:block;color:var(--soft);font-size:11px;font-weight:600;margin-top:1px}
+.theme-btn{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:12px;padding:9px 13px;font-size:12px;font-weight:800;cursor:pointer}
+.layout{display:grid;grid-template-columns:minmax(245px,.82fr) minmax(0,1.8fr);gap:18px;align-items:start}.column{display:grid;gap:18px;min-width:0}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:20px;min-width:0}
+.profile{text-align:center;padding:25px 20px}.avatar{width:68px;height:68px;margin:0 auto 13px;border-radius:20px;display:grid;place-items:center;background:var(--accent-soft);border:1px solid var(--line);color:var(--accent);font-size:29px}
+.eyebrow{font-size:11px;font-weight:800;color:var(--soft)}.username{font-size:21px;font-weight:900;margin:5px 0 3px;overflow-wrap:anywhere}.user-id{font-family:ui-monospace,monospace;font-size:11px;color:var(--soft);direction:ltr}
+#display-flag{display:none;margin:12px 0 0}#live-connections-badge{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:7px 11px;border-radius:999px;background:var(--inner);border:1px solid var(--line);color:var(--muted);font-size:11px;font-weight:800}#live-connections-badge .w-2{width:7px;height:7px;border-radius:50%;background:#10b981}
+.status{margin-top:16px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--inner);font-size:12px;font-weight:900}.section-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:900;margin:0 0 16px}.section-title:before{content:"";width:4px;height:17px;border-radius:4px;background:var(--accent)}
+.expiry-value{font-size:25px;font-weight:900;color:var(--accent);line-height:1.5;overflow-wrap:anywhere}.helper{font-size:11px;color:var(--soft);margin-top:4px}
+.info-row{display:flex;justify-content:space-between;gap:10px;padding-top:13px;margin-top:14px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}.info-row strong{color:var(--text);font-weight:800}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.metric{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:var(--shadow);min-width:0}
+.metric-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:16px}.metric-name{font-size:12px;color:var(--muted);font-weight:800}.metric-icon{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-size:16px}
+.metric-main{font-size:22px;font-weight:900;line-height:1.4;overflow-wrap:anywhere}.metric-sub{font-size:11px;color:var(--soft);margin-top:3px}.progress-track{height:7px;border-radius:99px;background:var(--track);overflow:hidden;margin:14px 0 9px}.progress-fill{height:100%;width:0;border-radius:99px;background:var(--accent);transition:width .7s ease}
+.progress-meta{display:flex;justify-content:space-between;gap:8px;font-size:10px;color:var(--soft)}.progress-meta strong{color:var(--muted);font-weight:800}.usage-wide{grid-column:1/-1}.note{font-size:11px;line-height:1.9;color:var(--muted)}.footer{text-align:center;color:var(--soft);font-size:10px;margin-top:22px}
+@media(max-width:760px){.page{padding:15px 12px 28px}.layout{grid-template-columns:1fr;gap:13px}.column{gap:13px}.card{padding:17px;border-radius:15px}.metrics{gap:10px}.metric{padding:14px;border-radius:14px}.metric-main{font-size:19px}.profile{padding:20px}.topbar{margin-bottom:15px}}
+@media(max-width:390px){.metrics{grid-template-columns:1fr}.usage-wide{grid-column:auto}.metric{padding:15px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+</style></head>
+<body><div class="page">
+<header class="topbar"><div class="brand"><div class="brand-mark">Z</div><div>ZEUS<small>پنل مدیریت اشتراک</small></div></div><button class="theme-btn" id="theme-toggle" type="button">☀️ پوسته روشن</button></header>
+<main class="layout">
+<aside class="column">
+<section class="card profile"><div class="avatar" aria-hidden="true">Z</div><div class="eyebrow">حساب کاربری</div><h1 class="username" id="display-username">در حال بارگذاری…</h1><div class="user-id">ZEUS SUBSCRIPTION</div><p id="display-flag"></p><div id="live-connections-badge" class="hidden"><span class="w-2"></span><span id="live-connections-text">۰ دستگاه متصل</span></div><div id="status-card" class="status"><span id="status-text">در حال بررسی وضعیت…</span></div></section>
+<section class="card"><h2 class="section-title">اعتبار اشتراک</h2><div class="eyebrow">تاریخ پایان اعتبار</div><div class="expiry-value" id="expiry-date">در حال محاسبه…</div><p class="helper" id="expiry-hint">بر اساس زمان ثبت‌شده برای اشتراک</p><div class="info-row"><span>روز باقی‌مانده</span><strong id="days-remaining">—</strong></div><div class="info-row"><span>مدت اولیه</span><strong id="total-days">—</strong></div></section>
+</aside>
+<section class="column"><div class="metrics">
+<article class="metric usage-wide"><div class="metric-head"><div class="metric-name">حجم مصرف‌شده</div><div class="metric-icon">⇅</div></div><div class="metric-main" id="used-vol">—</div><div class="metric-sub">از <strong id="limit-vol">—</strong></div><div class="progress-track"><div class="progress-fill" id="volume-progress"></div></div><div class="progress-meta"><strong id="volume-pct">۰٪</strong><span>میزان مصرف</span></div></article>
+<article class="metric"><div class="metric-head"><div class="metric-name">زمان باقی‌مانده</div><div class="metric-icon">◷</div></div><div class="metric-main" id="days-remaining-card">—</div><div class="metric-sub">از <span id="total-days-card">—</span></div><div class="progress-track"><div class="progress-fill" id="expiry-progress"></div></div><div class="progress-meta"><strong id="expiry-pct">۰٪</strong><span>اعتبار زمانی</span></div></article>
+<article class="metric"><div class="metric-head"><div class="metric-name">درخواست‌ها</div><div class="metric-icon">⌁</div></div><div class="metric-main" id="used-req">—</div><div class="metric-sub">از <strong id="limit-req">—</strong></div><div class="progress-track"><div class="progress-fill" id="req-progress"></div></div><div class="progress-meta"><strong id="req-pct">۰٪</strong><span>مصرف درخواست</span></div></article>
+<article class="metric"><div class="metric-head"><div class="metric-name">دستگاه‌های متصل</div><div class="metric-icon">▣</div></div><div class="metric-main" id="online-count">۰</div><div class="metric-sub">حداکثر <strong id="limit-online">—</strong></div><div class="progress-track"><div class="progress-fill" id="online-progress"></div></div><div class="progress-meta"><strong id="online-pct">۰٪</strong><span>اتصالات فعال</span></div></article>
+</div><section class="card"><h2 class="section-title">اطلاعات اشتراک</h2><p class="note">این صفحه وضعیت حساب، اعتبار زمانی و میزان مصرف را نمایش می‌دهد. اطلاعات بر اساس آخرین داده‌های ثبت‌شده در پنل محاسبه می‌شوند.</p></section></section>
+</main><footer class="footer">ZEUS · صفحه وضعیت اشتراک</footer></div>
 ${COMMON_TOAST_HTML}
-	<script>
-		/* {{USER_DATA_PLACEHOLDER}} */
-		${COMMON_TOAST_JS}
-		${COMMON_SHARED_FUNCS_JS}
-		function getHost() { return window.location.host; }
-		function copyvIeesConfig() { navigator.clipboard.writeText(getvIeesLink()).then(() => alert('✅ کـانفـیگ با موفقیت کپی شد!')); }
-		function copyTextSub() {
-			const link = window.location.protocol + '//' + getHost() + '/sub/' + encodeURIComponent(window.statusUser.username);
-			navigator.clipboard.writeText(link).then(() => alert('✅ لینک ساب متنی کپی شد!'));
-		}
-		function copyYamlSub() {
-			const link = window.location.protocol + '//' + getHost() + '/yaml/' + encodeURIComponent(window.statusUser.username);
-			navigator.clipboard.writeText(link).then(() => alert('✅ لینک ساب YAML کپی شد!'));
-		}
-		function toggleQrModal(show, text) {
-			const modal = document.getElementById('qr-modal');
-			const card = document.getElementById('qr-modal-card');
-			const container = document.getElementById('qrcode-container');
-			if (show) {
-				container.innerHTML = '';
-				const qrCode = new QRCodeStyling({
-					width: 280,
-					height: 280,
-					data: text,
-					margin: 5,
-					qrOptions: { errorCorrectionLevel: 'L' },
-					dotsOptions: {
-						color: "#000000",
-						type: "square"
-					},
-					backgroundOptions: {
-						color: "#ffffff"
-					},
-					cornersSquareOptions: {
-						color: "#000000",
-						type: "square"
-					},
-					cornersDotOptions: {
-						color: "#000000",
-						type: "square"
-					}
-				});
-				qrCode.append(container);
-				modal.classList.remove('opacity-0', 'pointer-events-none');
-				modal.classList.add('opacity-100', 'pointer-events-auto');
-				card.classList.remove('opacity-0', 'scale-95');
-				card.classList.add('opacity-100', 'scale-100');
-			} else {
-				modal.classList.remove('opacity-100', 'pointer-events-auto');
-				modal.classList.add('opacity-0', 'pointer-events-none');
-				card.classList.remove('opacity-100', 'scale-100');
-				card.classList.add('opacity-0', 'scale-95');
-			}
-		}
-		function showSubQr() {
-			const link = window.location.protocol + '//' + getHost() + '/sub/' + encodeURIComponent(window.statusUser.username);
-			toggleQrModal(true, link);
-		}
-		document.addEventListener('DOMContentLoaded', () => {
-			const u = window.statusUser;
-			if (!u) return;
-			const limit = u.ip_limit !== undefined ? u.ip_limit : u.max_connections;
-			document.getElementById('display-username').innerText = u.username;
-const flagContainer = document.getElementById('display-flag');
-	if (u.user_proxy_iata) {
-		const flag = getFlagEmoji(u.user_proxy_iata);
-		flagContainer.innerHTML = flag + " " + u.user_proxy_iata.toUpperCase();
-		flagContainer.style.display = 'block';
-} else if (u.user_socks5 || u.user_proxy_ip) {
-	flagContainer.style.display = 'block';
-	let proxyList = [];
-	try {
-		if (u.user_socks5 && u.user_socks5.trim().startsWith("[")) {
-			proxyList = JSON.parse(u.user_socks5);
-		} else { proxyList = [u.user_socks5 || u.user_proxy_ip]; }
-	} catch(e) {
-		proxyList = [u.user_socks5 || u.user_proxy_ip];
-	}
-	let initialFlags = proxyList.map(item => {
-		let targetProxy = typeof item === 'object' && item !== null ? item.proxy : item;
-		let targetCountry = typeof item === 'object' && item !== null ? item.country : null;
-		if (targetCountry) return getFlagEmoji(targetCountry);
-		try {
-			const proxyFlagCache = JSON.parse(localStorage.getItem('proxy_flag_cache_v2') || '{}');
-			const cached = proxyFlagCache[targetProxy];
-			if (cached && typeof cached === 'string' && /^[a-zA-Z]{2}$/.test(cached)) return getFlagEmoji(cached);
-		} catch(e) {}
-		return '⏳';
-	});
-	flagContainer.innerHTML = initialFlags.join(' ');
-	Promise.all(proxyList.map((item, index) => {
-		let targetProxy = typeof item === 'object' && item !== null ? item.proxy : item;
-		let targetCountry = typeof item === 'object' && item !== null ? item.country : null;
-		if (targetCountry) return Promise.resolve(getFlagEmoji(targetCountry));
-		try {
-			const proxyFlagCache = JSON.parse(localStorage.getItem('proxy_flag_cache_v2') || '{}');
-			const cached = proxyFlagCache[targetProxy];
-			if (cached && typeof cached === 'string' && /^[a-zA-Z]{2}$/.test(cached)) return Promise.resolve(getFlagEmoji(cached));
-		} catch(e) {}
-		return fetch('/api/test-proxy', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ proxy: targetProxy })
-		})
-		.then(res => res.json())
-		.then(data => {
-			if (data.success && data.country) {
-				const flagSvg = getFlagEmoji(data.country);
-				try {
-					const cache = JSON.parse(localStorage.getItem('proxy_flag_cache_v2') || '{}');
-					cache[targetProxy] = data.country.toUpperCase();
-					localStorage.setItem('proxy_flag_cache_v2', JSON.stringify(cache));
-				} catch(e) {}
-				return flagSvg;
-			}
-			return '<span class="zeus-flag-globe">🌐</span>';
-		})
-		.catch(() => '<span class="zeus-flag-globe">🌐</span>');
-	})).then(flags => {
-		flagContainer.innerHTML = flags.join(' ');
-	});
-}
-			const badge = document.getElementById('live-connections-badge');
-			badge.classList.remove('hidden');
-			if (u.online_count && u.online_count > 0) {
-				document.getElementById('live-connections-text').innerText = u.online_count + (limit ? '/' + limit : '') + ' دستگاه متصل';
-				badge.className = 'inline-flex items-center gap-1.5 px-3 py-1 bg-green-600/10 border border-green-600/20 text-green-600 rounded-full text-xs font-bold shadow-sm';
-				badge.querySelector('span.w-2').className = 'w-2 h-2 rounded-full bg-green-600 animate-pulse';
-			} else {
-				document.getElementById('live-connections-text').innerText = '۰ دستگاه متصل';
-				badge.className = 'inline-flex items-center gap-1.5 px-3 py-1 bg-gray-500/10 border border-gray-500/20 text-gray-500 dark:text-zinc-400 rounded-full text-xs font-bold shadow-sm';
-				badge.querySelector('span.w-2').className = 'w-2 h-2 rounded-full bg-gray-500';
-			}
-			const usedGb = u.used_gb || 0;
-			const limitGb = u.limit_gb;
-			const formattedUsed = usedGb < 1 ? (usedGb * 1024).toFixed(0) + ' MB' : usedGb.toFixed(2) + ' GB';
-			document.getElementById('used-vol').innerText = formattedUsed;
-			let isVolumeExpired = false;
-			if (limitGb) {
-				document.getElementById('limit-vol').innerText = limitGb + ' GB';
-				const pct = Math.min((usedGb / limitGb) * 100, 100);
-				document.getElementById('volume-pct').innerText = pct.toFixed(0) + '٪';
-				document.getElementById('volume-progress').style.width = pct + '%';
-				const hue = 120 - (pct * 1.2);
-				document.getElementById('volume-progress').style.backgroundColor = 'hsl(' + hue + ', 80%, 45%)';
-				if (usedGb >= limitGb) isVolumeExpired = true;
-			} else {
-				document.getElementById('limit-vol').innerText = 'نامحدود';
-				document.getElementById('volume-pct').innerText = '۰٪';
-				document.getElementById('volume-progress').style.width = '100%';
-				document.getElementById('volume-progress').style.backgroundColor = '#3b82f6';
-			}
-			let daysRemaining = 'نامحدود';
-			let totalDays = 'نامحدود';
-			let isTimeExpired = false;
-			if (u.expiry_days) {
-				totalDays = u.expiry_days + ' روز';
-				if (u.start_on_first_connect === 1 && !u.first_connection_time) {
-					daysRemaining = u.expiry_days + ' روز (شروع از اولین اتصال)';
-					document.getElementById('expiry-pct').innerText = '۱۰۰٪';
-					document.getElementById('expiry-progress').style.width = '100%';
-					document.getElementById('expiry-progress').style.backgroundColor = '#3b82f6';
-				} else if (u.start_on_first_connect === 1 && u.first_connection_time) {
-					const expiryDate = new Date(u.first_connection_time + (u.expiry_days * 86400000));
-					const diffDays = Math.ceil((expiryDate - new Date()) / (86400000));
-					daysRemaining = (diffDays > 0 ? diffDays : 0) + ' روز';
-					const pct = Math.max(0, Math.min(100, (Math.max(0, diffDays) / u.expiry_days) * 100));
-					document.getElementById('expiry-pct').innerText = pct.toFixed(0) + '٪';
-					document.getElementById('expiry-progress').style.width = pct + '%';
-					const hue = pct * 1.2;
-					document.getElementById('expiry-progress').style.backgroundColor = 'hsl(' + hue + ', 80%, 45%)';
-					if (new Date() > expiryDate) isTimeExpired = true;
-				} else if (u.created_at) {
-					const created = new Date(u.created_at);
-					const expiryDate = new Date(created.getTime() + (u.expiry_days * 86400000));
-					const diffDays = Math.ceil((expiryDate - new Date()) / (86400000));
-					daysRemaining = (diffDays > 0 ? diffDays : 0) + ' روز';
-					const pct = Math.max(0, Math.min(100, (Math.max(0, diffDays) / u.expiry_days) * 100));
-					document.getElementById('expiry-pct').innerText = pct.toFixed(0) + '٪';
-					document.getElementById('expiry-progress').style.width = pct + '%';
-					const hue = pct * 1.2;
-					document.getElementById('expiry-progress').style.backgroundColor = 'hsl(' + hue + ', 80%, 45%)';
-					if (new Date() > expiryDate) isTimeExpired = true;
-				}
-			} else {
-				document.getElementById('expiry-pct').innerText = '۰٪';
-				document.getElementById('expiry-progress').style.width = '100%';
-				document.getElementById('expiry-progress').style.backgroundColor = '#3b82f6';
-			}
-			document.getElementById('days-remaining').innerText = daysRemaining === 'نامحدود' ? 'نامحدود' : (daysRemaining.includes('روز') ? daysRemaining : daysRemaining + ' روز');
-			document.getElementById('total-days').innerText = totalDays;
-			const usedReq = u.used_req || 0;
-			const limitReq = u.limit_req;
-			document.getElementById('used-req').innerText = usedReq.toLocaleString();
-			let isReqExpired = false;
-			if (limitReq) {
-				document.getElementById('limit-req').innerText = limitReq.toLocaleString();
-				const rPct = Math.min((usedReq / limitReq) * 100, 100);
-				document.getElementById('req-pct').innerText = rPct.toFixed(0) + '٪';
-				document.getElementById('req-progress').style.width = rPct + '%';
-				const rHue = 120 - (rPct * 1.2);
-				document.getElementById('req-progress').style.backgroundColor = 'hsl(' + rHue + ', 80%, 45%)';
-				if (usedReq >= limitReq) isReqExpired = true;
-			} else {
-				document.getElementById('limit-req').innerText = 'نامحدود';
-				document.getElementById('req-pct').innerText = '۰٪';
-				document.getElementById('req-progress').style.width = '100%';
-				document.getElementById('req-progress').style.backgroundColor = '#3b82f6';
-			}
-			const onlineCount = u.online_count || 0;
-			document.getElementById('online-count').innerText = onlineCount;
-			if (limit) {
-				document.getElementById('limit-online').innerText = limit;
-				const oPct = Math.min((onlineCount / limit) * 100, 100);
-				document.getElementById('online-pct').innerText = oPct.toFixed(0) + '٪';
-				document.getElementById('online-progress').style.width = oPct + '%';
-				const oHue = 120 - (oPct * 1.2);
-				document.getElementById('online-progress').style.backgroundColor = 'hsl(' + oHue + ', 80%, 45%)';
-			} else {
-				document.getElementById('limit-online').innerText = 'نامحدود';
-				document.getElementById('online-pct').innerText = '۰٪';
-				document.getElementById('online-progress').style.width = '100%';
-				document.getElementById('online-progress').style.backgroundColor = onlineCount > 0 ? '#16a34a' : '#9ca3af'; 
-			}
-			const statusCard = document.getElementById('status-card');
-			const statusText = document.getElementById('status-text');
-			if (u.is_active === 0) {
-				statusCard.className = 'mb-6 rounded-md p-4 text-center border font-bold relative z-10 bg-red-50 dark:bg-red-500/10 border-red-300 dark:border-red-500/30 text-red-600 dark:text-red-500 shadow-sm';
-				statusCard.style.boxShadow = 'none';
-				statusText.innerText = '❌ وضعیت اشتراک: غیرفعال / مسدود دستی';
-			} else if (isVolumeExpired || isReqExpired || isTimeExpired) {
-				statusCard.className = 'mb-6 rounded-md p-4 text-center border font-bold relative z-10 bg-amber-50 dark:bg-yellow-500/10 border-amber-300 dark:border-yellow-500/30 text-amber-600 dark:text-yellow-500 shadow-sm';
-				statusCard.style.boxShadow = 'none';
-				if (isVolumeExpired) statusText.innerText = '⚠️ وضعیت اشتراک: تمام شدن حجم مجاز';
-				else if (isReqExpired) statusText.innerText = '📈 وضعیت اشتراک: تمام شدن ریکوئست مجاز';
-				else if (isTimeExpired) statusText.innerText = '⏳ وضعیت اشتراک: منقضی شده (پایان زمان اعتبار)';
-			} else {
-				statusCard.className = 'mb-6 rounded-md p-4 text-center border font-bold relative z-10 bg-green-50 dark:bg-green-600/10 border-green-300 dark:border-green-600/30 text-green-700 dark:text-green-500 shadow-sm';
-				statusCard.style.boxShadow = 'none';
-				statusText.innerText = '✅ وضعیت اشتراک: فعال و متصل';
-			}
-		});
-		window.addEventListener('click', (e) => {
-			if (e.target.id === 'qr-modal') toggleQrModal(false);
-		});
-	</script>
-	${COMMON_WAVES_SCRIPT}
-</body>
-</html>`,
+<script>
+/* {{USER_DATA_PLACEHOLDER}} */
+(function(){
+ const root=document.documentElement,themeButton=document.getElementById('theme-toggle');
+ function setTheme(mode){const dark=mode==='dark';root.classList.toggle('dark',dark);if(themeButton)themeButton.textContent=dark?'☀️ پوسته روشن':'🌙 پوسته تاریک';try{localStorage.setItem('zeus-sub-theme',mode)}catch(e){}}
+ let initial='dark';try{initial=localStorage.getItem('zeus-sub-theme')||'dark'}catch(e){}setTheme(initial);
+ if(themeButton)themeButton.addEventListener('click',()=>setTheme(root.classList.contains('dark')?'light':'dark'));
+ const u=window.statusUser;if(!u)return;const el=id=>document.getElementById(id),fmt=n=>Number(n||0).toLocaleString('fa-IR');
+ const percent=(used,limit)=>limit>0?Math.max(0,Math.min(100,used/limit*100)):0;
+ const bar=(id,p)=>{const node=el(id);if(node)node.style.width=p+'%'};
+ el('display-username').textContent=u.username||'کاربر';
+ const used=Number(u.used_gb||0),limit=Number(u.limit_gb||0),vp=percent(used,limit);
+ el('used-vol').textContent=used<1?fmt(used*1024)+' مگابایت':used.toFixed(2)+' گیگابایت';el('limit-vol').textContent=limit>0?fmt(limit)+' گیگابایت':'نامحدود';el('volume-pct').textContent=fmt(Math.round(vp))+'٪';bar('volume-progress',vp);
+ const ru=Number(u.used_req||0),rl=Number(u.limit_req||0),rp=percent(ru,rl);el('used-req').textContent=fmt(ru);el('limit-req').textContent=rl>0?fmt(rl):'نامحدود';el('req-pct').textContent=fmt(Math.round(rp))+'٪';bar('req-progress',rp);
+ const online=Number(u.online_count||0),ol=Number(u.ip_limit??u.max_connections??0),op=percent(online,ol);el('online-count').textContent=fmt(online);el('limit-online').textContent=ol>0?fmt(ol):'نامحدود';el('online-pct').textContent=fmt(Math.round(op))+'٪';bar('online-progress',op);
+ const days=Number(u.expiry_days||0);let date=null,left=null,started=true;
+ if(days>0){if(Number(u.start_on_first_connect)===1){if(u.first_connection_time)date=new Date(Number(u.first_connection_time)+days*86400000);else started=false}else if(u.created_at){const created=new Date(u.created_at);if(!Number.isNaN(created.getTime()))date=new Date(created.getTime()+days*86400000)}if(date)left=Math.max(0,Math.ceil((date.getTime()-Date.now())/86400000))}
+ const dateText=date?new Intl.DateTimeFormat('fa-IR',{year:'numeric',month:'long',day:'numeric'}).format(date):'';
+ el('expiry-date').textContent=days===0?'نامحدود':(!started?'شروع نشده':(dateText||'نامشخص'));el('expiry-hint').textContent=!started?'محاسبه از اولین اتصال آغاز می‌شود':'تاریخ بر اساس تقویم شمسی';
+ const remaining=days===0?'نامحدود':(!started?'شروع نشده':fmt(left||0)+' روز');el('days-remaining').textContent=remaining;el('days-remaining-card').textContent=remaining;
+ const total=days>0?fmt(days)+' روز':'نامحدود';el('total-days').textContent=total;el('total-days-card').textContent=total;
+ const tp=days>0?(started?Math.max(0,Math.min(100,(left||0)/days*100)):100):100;el('expiry-pct').textContent=fmt(Math.round(tp))+'٪';bar('expiry-progress',tp);
+ const expired=(days>0&&started&&left===0)||(limit>0&&used>=limit)||(rl>0&&ru>=rl),status=el('status-card'),statusText=el('status-text');
+ if(Number(u.is_active)===0){statusText.textContent='اشتراک غیرفعال است';status.style.color='#dc2626';status.style.background='rgba(220,38,38,.08)';status.style.borderColor='rgba(220,38,38,.25)'}
+ else if(expired){statusText.textContent='اعتبار یا سقف مصرف اشتراک به پایان رسیده';status.style.color='#d97706';status.style.background='rgba(217,119,6,.08)';status.style.borderColor='rgba(217,119,6,.25)'}
+ else{statusText.textContent='اشتراک فعال است';status.style.color='#059669';status.style.background='rgba(5,150,105,.08)';status.style.borderColor='rgba(5,150,105,.25)'}
+ const live=el('live-connections-badge');live.classList.remove('hidden');el('live-connections-text').textContent=fmt(online)+' دستگاه متصل';
+})();
+</script>
+</body></html>`
+,
 };
